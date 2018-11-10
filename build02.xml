@@ -1,0 +1,24 @@
+<project name="Sample Project" default="main" basedir=".">
+	<description>A sample 2 build file for this project</description>
+
+	<target name="build1">
+        <subant>
+            <filelist dir=".">
+                <file name="build.xml"/>
+            </filelist>
+            <target name="clean"/>
+            <target name="init"/>
+            <target name="compile"/>
+            <target name="doc"/>
+        </subant>
+    </target>
+	
+	<!-- Create jar file -->
+	<target name="jar" description="Create jar file">
+		<jar basedir="bin" destfile="jar/aplicacao.jar" />
+	</target>
+	
+	<target name="main" depends="build1, jar">
+		<description>Main target</description>
+	</target>
+</project>

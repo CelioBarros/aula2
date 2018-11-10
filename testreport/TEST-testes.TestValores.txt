@@ -1,0 +1,9 @@
+Testsuite: testes.TestValores
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,037 sec
+
+Testcase: testsEmpty took 0,011 sec
+Testcase: testDel took 0 sec
+Testcase: testIns took 0,004 sec
+Testcase: testLower took 0 sec
+Testcase: testGreater took 0 sec
+Testcase: testInsertions took 0 sec

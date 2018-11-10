@@ -1,0 +1,44 @@
+<project name="Sample Project" default="main" basedir=".">
+	<description>A sample 3 build file for this project</description>
+
+	<property name="report.dir" location="testreport" />
+
+	<path id="junit.class.path">
+		<pathelement location="lib/junit-4.12.jar" />
+	</path>
+	
+	<target name="init" description="setup project directories">
+		<mkdir dir="${report.dir}" />
+	</target>
+
+	<target name="build2">
+		<subant>
+			<filelist dir=".">
+				<file name="build02.xml" />
+			</filelist>
+			<target name="build1" />
+			<target name="jar" />
+		</subant>
+	</target>
+
+	<!-- tests -->
+	<target name="junit" depends="build2">
+		<junit printsummary="yes" haltonfailure="no">
+			<!-- Project classpath, must include junit.jar -->
+			<classpath refid="junit.class.path" />
+
+			<!-- test class -->
+			<classpath location="bin" />
+
+			<test name="testes.TestValores" haltonfailure="no"
+				todir="${report.dir}">
+				<formatter type="plain" />
+				<formatter type="xml" />
+			</test>
+		</junit>
+	</target>
+
+	<target name="main" depends="build2, init, junit">
+		<description>Main target</description>
+	</target>
+</project>
